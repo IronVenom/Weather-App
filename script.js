@@ -23,35 +23,33 @@ navigator.geolocation.getCurrentPosition(function(userPosition){
 	var request = new XMLHttpRequest();
 	request.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat=' + Number(userPosition.coords.latitude) + '&lon=' + Number(userPosition.coords.longitude), true);
 	request.onload = function() {
-	  var data = JSON.parse(this.response)
-	  if (request.status >= 200 && request.status < 400) {
+		var data = JSON.parse(this.response);
+		if (request.status >= 200 && request.status < 400) {
 
-	    var currentWeather = data["weather"][0]["main"];
-	    var weather = document.querySelector("#weather");
-		weather.textContent = currentWeather;
+			var currentWeather = data["weather"][0]["main"];
+			var weather = document.querySelector("#weather");
+			weather.textContent = currentWeather;
 
-	    var currentTemperature = Math.round(data["main"]["temp"]);
-	    var temperature = document.querySelector("#temperature");
-		temperature.textContent = String(currentTemperature);
+			var currentTemperature = Math.round(data["main"]["temp"]);
+			var temperature = document.querySelector("#temperature");
+			temperature.textContent = String(currentTemperature);
 
-	
-		var currentIcon = iconObject[currentWeather];
-		var icon = document.querySelector("#icon");
-		icon.innerHTML = "<img src=" + currentIcon + " >";
+			var currentIcon = iconObject[currentWeather];
+			var icon = document.querySelector("#icon");
+			icon.innerHTML = "<img src=" + currentIcon + " >";
 
-		tempButton.classList.add("btn","btn-md","btn-dark");
-		tempButton.textContent = "Click to change temperature to Fahrenheit Scale";
+			tempButton.classList.add("btn","btn-md","btn-dark");
+			tempButton.textContent = "Click to change temperature to Fahrenheit Scale";
 
-		var scale = document.querySelector("#scale");
-		scale.textContent = "°C";
+			var scale = document.querySelector("#scale");
+			scale.textContent = "°C";
 
-	  } else { 
-	    console.log('error');
-	  }
+		} else { 
+			console.log('error');
+		}
 	}
-	request.send()
+	request.send();
 });
-
 
 tempButton.addEventListener("click",function(){
 	if(!isFahrenheit){
@@ -75,6 +73,3 @@ tempButton.addEventListener("click",function(){
 		temperature.textContent = celtemp;
 	}
 });
-
-
-
