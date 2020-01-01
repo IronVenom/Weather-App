@@ -13,7 +13,7 @@ var iconObject = {
 	Ash : "http://openweathermap.org/img/wn/50d@2x.png",
 	Squall : "http://openweathermap.org/img/wn/50d@2x.png",
 	Tornado : "http://openweathermap.org/img/wn/50d@2x.png"
-}
+};
 
 var tempButton = document.querySelector("#tempbutton");
 
@@ -34,6 +34,7 @@ navigator.geolocation.getCurrentPosition(function(userPosition){
 			var temperature = document.querySelector("#temperature");
 			temperature.textContent = String(currentTemperature);
 
+
 			var currentIcon = iconObject[currentWeather];
 			var icon = document.querySelector("#icon");
 			icon.innerHTML = "<img src=" + currentIcon + " >";
@@ -44,11 +45,35 @@ navigator.geolocation.getCurrentPosition(function(userPosition){
 			var scale = document.querySelector("#scale");
 			scale.textContent = "°C";
 
+			var temptext = document.querySelector("#temptext");
+			temptext.textContent = "Temperature:";
+
+			var currentHumidity = String(data.main.humidity);
+			var humidity = document.querySelector("#humidity");
+			humidity.textContent = currentHumidity+" %";
+			var humidText = document.querySelector("#humidtext");
+			humidText.textContent = "Humidity:";
+
+			var currentPressure = String(data.main.pressure);
+			var pressure = document.querySelector("#pressure");
+			pressure.textContent = currentPressure + " hpa";
+			var pressuretext = document.querySelector("#pressuretext");
+			pressuretext.textContent = "Pressure:";
+
+			var currentUserLocation = data.name +  " , " + data.sys.country;
+			var userLocation = document.querySelector("#userlocation");
+			userLocation.textContent = currentUserLocation;
+
+			var currentWind = String(data.wind.speed);
+			var wind = document.querySelector("#wind");
+			wind.textContent = currentWind + " m/s";
+			var windtext = document.querySelector("#windtext");
+			windtext.textContent = "Wind:";
 		} else { 
 			console.log('error');
 		}
 	}
-	request.send();
+	request.send()
 });
 
 tempButton.addEventListener("click",function(){
