@@ -12,7 +12,8 @@ var iconObject = {
 	Sand : "http://openweathermap.org/img/wn/50d@2x.png",
 	Ash : "http://openweathermap.org/img/wn/50d@2x.png",
 	Squall : "http://openweathermap.org/img/wn/50d@2x.png",
-	Tornado : "http://openweathermap.org/img/wn/50d@2x.png"
+	Tornado : "http://openweathermap.org/img/wn/50d@2x.png",
+	Rain : "http://openweathermap.org/img/wn/09d@2x.png"
 };
 
 var tempButton = document.querySelector("#tempbutton");
